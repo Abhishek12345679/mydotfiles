@@ -1,0 +1,30 @@
+# This is Git's per-user configuration file.
+[user]
+
+[core]
+	excludesfile = /Users/<USER_NAME>/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/<USER_NAME>/.stCommitMsg
+[init]
+	defaultBranch = main
+
+[hub]
+#	protocol = https
+
+[alias]
+	s = status
+	open="!hub browse"
+	br = branch
+	nb = "checkout -b"
+	d = diff
+	ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
+	pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
+	c = commit -a
+	co = checkout
+	a = "!git status --short | peco | awk '{print $2}' | xargs git add"
